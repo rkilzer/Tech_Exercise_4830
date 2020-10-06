@@ -19,7 +19,6 @@ public class MyServletKilzer extends HttpServlet {
      */
     public MyServletKilzer() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
