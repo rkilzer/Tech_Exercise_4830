@@ -1,6 +1,6 @@
 
 /**
- * @file SimpleFormInsert.java
+ * @file RemoveTask.java
  */
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,25 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SimpleFormInsert")
-public class SimpleFormInsert extends HttpServlet {
+@WebServlet("/RemoveTask")
+public class RemoveTask extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
-   public SimpleFormInsert() {
+   public RemoveTask() {
       super();
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String task = request.getParameter("task");
+      String id = request.getParameter("id");
 
       Connection connection = null;
-      String insertSql = " INSERT INTO ToDoTasks (id, task) values (default, ?)";
+      String deleteSql = "DELETE FROM ToDoTasks WHERE id=?";
 
       try {
          DBConnectionKilzer.getDBConnection(getServletContext());
          connection = DBConnectionKilzer.connection;
-         PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-         preparedStmt.setString(1, task);
+         PreparedStatement preparedStmt = connection.prepareStatement(deleteSql);
+         preparedStmt.setString(1, id);
          preparedStmt.execute();
          connection.close();
       } catch (Exception e) {
@@ -41,20 +41,17 @@ public class SimpleFormInsert extends HttpServlet {
       // Set response content type
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "Insert Data to DB table";
+      String title = "Removed!";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
       out.println(docType + //
             "<html>\n" + //
             "<head><title>" + title + "</title></head>\n" + //
             "<body bgcolor=\"#f0f0f0\">\n" + //
-            "<h2 align=\"center\">" + title + "</h2>\n" + //
-            "<ul>\n" + //
-
-            "  <li><b>Task</b>: " + task + "\n" + //
-
-            "</ul>\n");
+            "<h2 align=\"center\">" + title + "</h2>\n"//
+            );
 
       out.println("<a href=\"SimpleFormSearch\" action=\"POST\">See all tasks</a> <br>");
+      out.println("<a href=/webproject-ex-0923-Kilzer/simpleFormInsert.html>Insert Tasks</a> <br>");
       out.println("</body></html>");
    }
 
