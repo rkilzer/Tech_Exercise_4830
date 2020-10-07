@@ -57,7 +57,7 @@ public class SimpleFormSearchKilzer extends HttpServlet {
            		"	</form></li>");
          }
          out.println("</ul>");
-         out.println("<a href=/webproject-ex-0923-Kilzer/simpleFormInsert.html>Insert Tasks</a> <br>");
+         out.println("<a href=/webproject_techexercise_Kilzer/simpleFormInsert.html>Insert Tasks</a> <br>");
          out.println("</body></html>");
          rs.close();
          preparedStatement.close();

@@ -51,7 +51,7 @@ public class RemoveTask extends HttpServlet {
             );
 
       out.println("<a href=\"SimpleFormSearch\" action=\"POST\">See all tasks</a> <br>");
-      out.println("<a href=/webproject-ex-0923-Kilzer/simpleFormInsert.html>Insert Tasks</a> <br>");
+      out.println("<a href=/webproject_techexercise_Kilzer/simpleFormInsert.html>Insert Tasks</a> <br>");
       out.println("</body></html>");
    }
 
